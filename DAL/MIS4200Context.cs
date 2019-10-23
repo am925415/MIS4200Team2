@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using MIS4200Team2.Models;  // This is needed to access the models using System.Data.Entity;
+using MIS4200Team2.Models;  // This is needed to access the models 
+using System.Data.Entity;
+
 
 namespace MIS4200Team2.DAL
 {

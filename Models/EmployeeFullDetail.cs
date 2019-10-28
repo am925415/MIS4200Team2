@@ -7,7 +7,7 @@ namespace MIS4200Team2.Models
 {
     public class EmployeeFullDetail
     {
-        public int employeeID { get; set; }
+        public int employeeFullDetailID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string businessUnit { get; set; }

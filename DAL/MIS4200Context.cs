@@ -22,6 +22,8 @@ namespace MIS4200Team2.DAL
         // and is the name used to reference the entity in code 
 
         public DbSet<Profile> Profiles { get; set; }
+
+        public System.Data.Entity.DbSet<MIS4200Team2.Models.EmployeeFullDetail> EmployeeFullDetails { get; set; }
     }
         
 }

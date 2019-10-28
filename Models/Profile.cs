@@ -7,7 +7,7 @@ namespace MIS4200Team2.Models
 {
     public class Profile
     {
-        public int employeeBioID { get; set; }
+        public int profileID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
 

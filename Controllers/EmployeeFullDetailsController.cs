@@ -16,6 +16,21 @@ namespace MIS4200Team2.Controllers
         private MIS4200Context db = new MIS4200Context();
 
         // GET: EmployeeFullDetails
+        public ActionResult Index(string searchString)
+        {
+            var testusers = from u in db.EmployeeFullDetails select u;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                testusers = testusers.Where(u =>
+                u.lastName.Contains(searchString)
+                || u.firstName.Contains(searchString));
+                return View(testusers.ToList());
+            }
+            return View(db.EmployeeFullDetails.ToList());
+        }
+
+
+
         public ActionResult Index()
         {
             return View(db.EmployeeFullDetails.ToList());

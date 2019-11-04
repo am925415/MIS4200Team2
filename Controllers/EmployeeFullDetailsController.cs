@@ -27,14 +27,12 @@ namespace MIS4200Team2.Controllers
                 return View(testusers.ToList());
             }
             return View(db.EmployeeFullDetails.ToList());
-        }
-
-
-
-        public ActionResult Index()
-        {
-            return View(db.EmployeeFullDetails.ToList());
         }
+
+
+
+
+        
 
         // GET: EmployeeFullDetails/Details/5
         public ActionResult Details(int? id)

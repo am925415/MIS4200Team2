@@ -9,7 +9,8 @@ namespace MIS4200Team2.Models
 {
         public class Profile
         {
-            [Display(Name = "First Name:")]
+        public int profileID { get; set; }
+        [Display(Name = "First Name:")]
             [Required(ErrorMessage = "First Name is required")]
             public string FirstName { get; set; }
             [Display(Name = "Last Name:")]

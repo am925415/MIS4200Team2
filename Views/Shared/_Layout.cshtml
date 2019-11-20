@@ -10,6 +10,8 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
+        <p><br/></p>
+        <img src="https://content.nexza.com/companies/04e95bad-f426-482d-818b-ca754d284add/logo.4adb7900.png" class="img-center" height="30" width="120" />
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,14 +19,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <img src="https://content.nexza.com/companies/04e95bad-f426-482d-818b-ca754d284add/logo.4adb7900.png" class="img-center" height="30" width="120" />
                 @Html.ActionLink("Centric", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Search Centric Employees", "Index", "EmployeeFullDetails")</li>
                     <li>@Html.ActionLink("My Profile", "Index", "Profiles")</li>
-                   
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MIS4200Team2.Models
 {
-    public class EmployeeFullDetail
+    public class EmployeeRecognitionNomination
     {
         public int employeeFullDetailID { get; set; }
         [Display(Name = "Employee ID")]
@@ -17,11 +17,9 @@ namespace MIS4200Team2.Models
         [Display(Name = "Last Name")]
         public string businessUnit { get; set; }
         [Display(Name = "Business Unit")]
-        public DateTime hireDate { get; set; }
-        [Display(Name = "Hiring Date")]
-        public string title { get; set; }
-        [Display(Name = "Title")]
+        public string recognition { get; set; }
+        [Display(Name = "Employee Recognition Nomination Description")]
 
-        public ICollection<EmployeeFullDetail> EmployeeFullDetails { get; set; }
-    }
+        public ICollection<EmployeeRecognitionNomination> EmployeeRecognitionNominations { get; set; }
+    } 
 }

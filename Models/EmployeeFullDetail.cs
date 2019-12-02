@@ -8,20 +8,24 @@ using System.ComponentModel.DataAnnotations;
 namespace MIS4200Team2.Models
 {
     public class EmployeeFullDetail
+
     {
         public int employeeFullDetailID { get; set; }
-        [Display(Name = "Employee ID")]
-        public string firstName { get; set; }
         [Display(Name = "First Name")]
-        public string lastName { get; set; }
+        public string firstName { get; set; }
         [Display(Name = "Last Name")]
-        public string businessUnit { get; set; }
+        public string lastName { get; set; }
         [Display(Name = "Business Unit")]
-        public DateTime hireDate { get; set; }
+        public string businessUnit { get; set; }
         [Display(Name = "Hiring Date")]
-        public string title { get; set; }
+        public DateTime hireDate { get; set; }
         [Display(Name = "Title")]
+        public string title { get; set; }
 
-        public ICollection<EmployeeFullDetail> EmployeeFullDetails { get; set; }
+        public ICollection<Profile> Profiles { get; set; }
+
+        
     }
+  
+    
 }

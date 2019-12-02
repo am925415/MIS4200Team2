@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace MIS4200Team2.Models
 {
     public class EmployeeFullDetail
+
     {
         public int employeeFullDetailID { get; set; }
         [Display(Name = "First Name")]
@@ -22,5 +23,9 @@ namespace MIS4200Team2.Models
         public string title { get; set; }
 
         public ICollection<Profile> Profiles { get; set; }
+
+        
     }
+  
+    
 }

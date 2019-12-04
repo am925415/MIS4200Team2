@@ -36,8 +36,12 @@ namespace MIS4200Team2.Models
         public string Country { get; set; }
         [Display(Name = "Country:")]
         [Required(ErrorMessage = "Country is required")]
+
+
     }
-        public class EmployeeProfile : DbContext
+
+
+    public class EmployeeProfile : DbContext
         {
             public DbSet<Profile> Profiles { get; set; }
         }

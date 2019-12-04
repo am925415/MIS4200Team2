@@ -33,6 +33,41 @@ namespace MIS4200Team2.Controllers
             {
                 return HttpNotFound();
             }
+
+            var recList = db.employeeRecognitionNominations.Where(r => r.id == profileID).ToList();
+            ViewBag.Profile = recList;
+
+            var totalCnt = recList.Count(); //counts all the recognitions for that person
+            var rec1Cnt = recList.Where(r => r.values == employeeRecognitionNominations.cValues.DeliveryExcellance).Count();
+            // counts all the Excellence recognitions
+            // notice how the Enum values are references, class.enum.value
+            // the next two lines show another way to do the same counting
+            var rec2Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Culture);
+            var rec3Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Integrity);
+            var rec4Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Stewardship);
+            var rec5Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Innovation);
+            var rec6Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.GreaterGood);
+            var rec7Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Balance);
+            // copy the values into the ViewBag
+            ViewBag.total = totalCnt;
+            ViewBag.Excellence = rec1Cnt;
+            ViewBag.Culture = rec2Cnt;
+            ViewBag.Integrity = rec3Cnt;
+            ViewBag.Stewardship = rec4Cnt;
+            ViewBag.Innovation = rec5Cnt;
+            ViewBag.GreaterGood = rec6Cnt;
+            ViewBag.Balance = rec7Cnt;
+
+
+
+
+
+
+
+
+
+
+
             return View(profile);
         }
 

@@ -21,5 +21,9 @@ namespace MIS4200Team2.Models
         [Display(Name = "Employee Recognition Nomination Description")]
 
         public ICollection<EmployeeRecognitionNomination> EmployeeRecognitionNominations { get; set; }
+
+        public int profileID { get; set; }
+        public virtual Profile Profile  { get; set; }
     } 
+    
 }

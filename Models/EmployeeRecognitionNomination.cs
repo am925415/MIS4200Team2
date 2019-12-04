@@ -9,7 +9,7 @@ namespace MIS4200Team2.Models
 {
     public class EmployeeRecognitionNomination
     {
-        public int employeeFullDetailID { get; set; }
+        [Key]public int employeeID { get; set; }
         [Display(Name = "Employee ID")]
         public string firstName { get; set; }
         [Display(Name = "First Name")]

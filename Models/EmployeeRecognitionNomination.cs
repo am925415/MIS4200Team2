@@ -9,12 +9,11 @@ namespace MIS4200Team2.Models
 {
     public class EmployeeRecognitionNomination
     {
-        [Display(Name = "Employee Recognition Nomination ID:")]
-        [Key] public int employeeRecognitionNominationID { get; set; }
-
+       
         [Display(Name = "Employee ID:")]
-        [Key] public int employeeID { get; set; }
+         [Key] public int employeeID { get; set; }
 
+        
         [Display(Name = "First Name:")]
         [Required(ErrorMessage = "First Name is required")]
         public string FirstName { get; set; }
@@ -23,15 +22,7 @@ namespace MIS4200Team2.Models
         [Required(ErrorMessage = "Last Name is required")]
         public string LastName { get; set; }
 
-        [Display(Name = "Business Location:")]
-        [Required(ErrorMessage = "Business Location is required")]
-        public businessLocation BusinessLocation { get; set; }
-
         public DateTime HireDate { get; set; }
-
-        [Display(Name = "Employee Title:")]
-        [Required(ErrorMessage = "Hire Date is required")]
-        public title Title { get; set; }
 
         [Display(Name = "Email Address:")]
         [Required(ErrorMessage = "The email address is required")]
@@ -42,13 +33,16 @@ namespace MIS4200Team2.Models
         [Required(ErrorMessage = "Phone Number is required")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public string PhoneNumber { get; set; }
-
+      
+        [Display(Name = "Business Unit")]
+        [Required(ErrorMessage = "Business Unit Required")]
+        public businessUnit bUnit { get; set; }
         [Display(Name = "Recognition Description:")]
         public string recognitionDescription { get; set; }
 
         [Display(Name = "Core Value:")]
         public centricCoreValue CentricCoreValue { get; set; }
-        public enum businessLocation
+        public enum businessUnit
         {
             Boston,
             Charlotte,
@@ -79,6 +73,9 @@ namespace MIS4200Team2.Models
             VP
         }
 
+        [Display(Name = "Values")]
+        public centricCoreValue values { get; set; }
+
         public enum centricCoreValue
         {
             Stewardship,
@@ -93,7 +90,7 @@ namespace MIS4200Team2.Models
         }
         
         public ICollection<EmployeeRecognitionNomination> EmployeeRecognitionNominations { get; set; }
-
+        
         public int profileID { get; set; }
         public virtual Profile Profile  { get; set; }
     } 

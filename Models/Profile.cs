@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
+//using System.Data.Entity;
 
 namespace MIS4200Team2.Models
 {
     public class Profile
     {
-        [Display(Name = "Employee ID:")]
-        [Key] public int employeeID { get; set; }
+        [Display(Name = "Profile ID:")]
+        [Key] public int profileID { get; set; }
 
         [Display(Name = "First Name:")]
         [Required(ErrorMessage = "First Name is required")] 

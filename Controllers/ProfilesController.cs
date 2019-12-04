@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MIS4200Team2.DAL;
 using MIS4200Team2.Models;
+using Microsoft.AspNet.Identity;
 
 namespace MIS4200Team2.Controllers
 {
@@ -34,20 +35,20 @@ namespace MIS4200Team2.Controllers
                 return HttpNotFound();
             }
 
-            var recList = db.employeeRecognitionNominations.Where(r => r.id == profileID).ToList();
+            var recList = db.employeeRecognitionNominations.Where(r => r.profileID == id).ToList();
             ViewBag.Profile = recList;
 
             var totalCnt = recList.Count(); //counts all the recognitions for that person
-            var rec1Cnt = recList.Where(r => r.values == employeeRecognitionNominations.cValues.DeliveryExcellance).Count();
+            var rec1Cnt = recList.Where(r => r.values == EmployeeRecognitionNomination.centricCoreValue.DeliveryExcellance).Count();
             // counts all the Excellence recognitions
             // notice how the Enum values are references, class.enum.value
             // the next two lines show another way to do the same counting
-            var rec2Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Culture);
-            var rec3Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Integrity);
-            var rec4Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Stewardship);
-            var rec5Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Innovation);
-            var rec6Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.GreaterGood);
-            var rec7Cnt = recList.Count(r => r.values == employeeRecognitionNominations.cValues.Balance);
+            var rec2Cnt = recList.Count(r => r.values == EmployeeRecognitionNomination.centricCoreValue.Culture);
+            var rec3Cnt = recList.Count(r => r.values == EmployeeRecognitionNomination.centricCoreValue.Integrity);
+            var rec4Cnt = recList.Count(r => r.values == EmployeeRecognitionNomination.centricCoreValue.Stewardship);
+            var rec5Cnt = recList.Count(r => r.values == EmployeeRecognitionNomination.centricCoreValue.Innovation);
+            var rec6Cnt = recList.Count(r => r.values == EmployeeRecognitionNomination.centricCoreValue.GreaterGood);
+            var rec7Cnt = recList.Count(r => r.values == EmployeeRecognitionNomination.centricCoreValue.Balance);
             // copy the values into the ViewBag
             ViewBag.total = totalCnt;
             ViewBag.Excellence = rec1Cnt;
@@ -57,16 +58,6 @@ namespace MIS4200Team2.Controllers
             ViewBag.Innovation = rec5Cnt;
             ViewBag.GreaterGood = rec6Cnt;
             ViewBag.Balance = rec7Cnt;
-
-
-
-
-
-
-
-
-
-
 
             return View(profile);
         }
@@ -82,7 +73,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "profileID,firstName,lastName,bio,email,phoneNumber,employeeID")] Profile profile)
+        public ActionResult Create([Bind(Include = "profileID,firstName,lastName,title,email,phoneNumber,businessLoaction")] Profile profile)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +105,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "profileID,firstName,lastName,bio,email,phoneNumber,employeeID")] Profile profile)
+        public ActionResult Edit([Bind(Include = "profileID,firstName,lastName,bio,email,phoneNumber")] Profile profile)
         {
             if (ModelState.IsValid)
             {

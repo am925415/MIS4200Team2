@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using MIS4200Team2.DAL;
 using MIS4200Team2.Models;
-using System.Net;
 using System.Net.Mail;
 
 
@@ -18,71 +17,42 @@ namespace MIS4200Team2.Controllers
     {
         private MIS4200Context db = new MIS4200Context();
 
-        // GET: EmployeeRecognitionNominations
+        // GET: Recognitions
         public ActionResult Index()
         {
-            return View(db.employeeRecognitionNominations.ToList());
+            var recognition = db.employeeRecognitionNominations.Include(r => r.Profile);
+            return View(recognition.ToList());
         }
 
-        // GET: EmployeeRecognitionNominations/Details/5
+        // GET: Recognitions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EmployeeRecognitionNomination employeeRecognitionNomination = db.employeeRecognitionNominations.Find(id);
-            if (employeeRecognitionNomination == null)
+            var recognition = db.employeeRecognitionNominations.Find(id);
+            if (recognition == null)
             {
                 return HttpNotFound();
             }
-            return View(employeeRecognitionNomination);
+
+            return View(recognition);
         }
 
-        // GET: EmployeeRecognitionNominations/Create
+        // GET: Recognitions/Create
         public ActionResult Create()
         {
+            ViewBag.id = new SelectList(db.Profiles, "id", "FullName");
             return View();
         }
 
-        // POST: EmployeeRecognitionNominations/Create
+        // POST: Recognitions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "employeeID,firstName,lastName,businessUnit,recognition")] EmployeeRecognitionNomination employeeRecognitionNomination)
-        {
-            if (ModelState.IsValid)
-            {
-                db.employeeRecognitionNominations.Add(employeeRecognitionNomination);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(employeeRecognitionNomination);
-        }
-
-        // GET: EmployeeRecognitionNominations/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            EmployeeRecognitionNomination employeeRecognitionNomination = db.employeeRecognitionNominations.Find(id);
-            if (employeeRecognitionNomination == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employeeRecognitionNomination);
-        }
-
-        // POST: EmployeeRecognitionNominations/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "employeeID,firstName,lastName,businessUnit,recognition")] EmployeeRecognitionNomination employeeRecognitionNomination)
+        public ActionResult Create([Bind(Include = "profileID,description,values,id")] EmployeeRecognitionNomination employeeRecognitionNomination)
         {
             if (ModelState.IsValid)
             {
@@ -98,19 +68,19 @@ namespace MIS4200Team2.Controllers
                 MailAddress from = new MailAddress("jg346015@ohio.edu", "SysAdmin");
                 myMessage.From = from;
                 // first, the customer found in the order is used to locate the customer record
-                var profile = db.Profiles.Find(employeeRecognitionNomination.id);
+                var profile = db.Profiles.Find(employeeRecognitionNomination.profileID);
                 // then extract the email address from the customer record
                 var profileEmail = profile.email;
                 // finally, add the email address to the “To” list
                 myMessage.To.Add(profileEmail);
                 // note: it is possible to add more than one email address to the To list
                 // it is also possible to add CC addresses
-                myMessage.To.Add("jg346015@ohio.edu"); // this should be replaced with model data
+                myMessage.To.Add("mc200015@ohio.edu"); // this should be replaced with model data
                                                        // as shown at the end of this document
                 myMessage.Subject = "Centric Recognition";
                 // the body of the email is hard coded here but could be dynamically created using data
                 // from the model- see the note at the end of this document
-                myMessage.Body = "Congratulations! You have received a recognition! Please log into your Centric profile page to view your recognition.";
+                myMessage.Body = "Congratulations! Your employee as recognized you for displaying exceptional work!";
                 try
                 {
                     myClient.Send(myMessage);
@@ -125,7 +95,7 @@ namespace MIS4200Team2.Controllers
 
             }
             // return View();
-            ViewBag.id = new SelectList(db.Profiles, "id", "firstName", employeeRecognitionNomination.id);
+            ViewBag.id = new SelectList(db.Profiles, "id", "firstName", employeeRecognitionNomination.profileID);
             return View(employeeRecognitionNomination);
         }
 
@@ -141,12 +111,12 @@ namespace MIS4200Team2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id = new SelectList(db.Profiles, "id", "firstName", employeeRecognitionNomination.id);
+            ViewBag.id = new SelectList(db.Profiles, "id", "firstName", employeeRecognitionNomination.profileID);
             return View(employeeRecognitionNomination);
         }
 
         // POST: Recognitions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -158,7 +128,7 @@ namespace MIS4200Team2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id = new SelectList(db.Profiles, "id", "firstName", employeeRecognitionNomination.id);
+            ViewBag.id = new SelectList(db.Profiles, "id", "firstName", employeeRecognitionNomination.profileID);
             return View(employeeRecognitionNomination);
         }
 
@@ -182,8 +152,8 @@ namespace MIS4200Team2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            EmployeeRecognitionNomination EmployeeRecognitionNomination = db.employeeRecognitionNominations.Find(id);
-            db.employeeRecognitionNominations.Remove(EmployeeRecognitionNomination);
+            EmployeeRecognitionNomination employeeRecognitionNomination = db.employeeRecognitionNominations.Find(id);
+            db.employeeRecognitionNominations.Remove(employeeRecognitionNomination);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

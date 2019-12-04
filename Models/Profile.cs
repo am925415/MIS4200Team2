@@ -9,41 +9,79 @@ namespace MIS4200Team2.Models
 {
     public class Profile
     {
-        public int profileID { get; set; }
-        public string FirstName { get; set; }
+        [Display(Name = "Employee ID:")]
+        [Key] public int employeeID { get; set; }
+
         [Display(Name = "First Name:")]
-        [Required(ErrorMessage = "First Name is required")]
-        public string LastName { get; set; }
+        [Required(ErrorMessage = "First Name is required")] 
+        public string FirstName { get; set; }
+
         [Display(Name = "Last Name:")]
         [Required(ErrorMessage = "Last Name is required")]
-        public string email { get; set; }
+        public string LastName { get; set; }
+
+        [Display(Name = "Business Location:")]
+        [Required(ErrorMessage = "Business Location is required")]
+        public businessLocation BusinessLocation { get; set; }
+
+        [Display(Name = "Hire Date:")]
+        [Required(ErrorMessage = "Hire Date is required")]
+        public DateTime HireDate { get; set; }
+
+        [Display(Name = "Employee Title:")]
+        [Required(ErrorMessage = "Hire Date is required")]
+        public title Title { get; set; }
+
         [Display(Name = "Email Address:")]
         [Required(ErrorMessage = "The email address is required")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
-        public string PhoneNumber { get; set; }
+        public string email { get; set; }
+
         [Display(Name = "Phone Number:")]
         [Required(ErrorMessage = "Phone Number is required")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
-        public string BusinessUnit { get; set; }
-        [Display(Name = "Business Unit:")]
-        [Required(ErrorMessage = "Business Unit is required")]
-        public DateTime HireDate { get; set; }
-        [Display(Name = "Hire Date:")]
-        [Required(ErrorMessage = "Hire Date is required")]
-        public string State { get; set; }
-        [Display(Name = "State:")]
-        [Required(ErrorMessage = "Please select your state")]
-        public string Country { get; set; }
-        [Display(Name = "Country:")]
-        [Required(ErrorMessage = "Country is required")]
-
-
-    }
-
-
-    public class EmployeeProfile : DbContext
+        public string PhoneNumber { get; set; }
+        
+        public enum businessLocation
         {
-            public DbSet<Profile> Profiles { get; set; }
+            Boston,
+            Charlotte,
+            Chicago,
+            Cincinnati,
+            Cleveland,
+            Columbus,
+            India,
+            Indianapolis,
+            Louisville,
+            Miami,
+            Seattle,
+            [Display(Name = "St. Louis")]
+            StLouis,
+            Tampa
         }
-    
+
+        public enum title
+        {
+            Consultant,
+            [Display(Name = "Senior Consultant")]
+            SeniorConsultant,
+            Manager,
+            Architect,
+            [Display(Name = "Senior Manager/Senior Architect")]
+            SeniorManager,
+            Director,
+            VP
+        }
+
+        ICollection<EmployeeRecognitionNomination> EmployeeRecognitionNominations { get; set; }
+
+        public string fullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
+        
+    }
 }

@@ -179,7 +179,6 @@
     </Compile>
     <Compile Include="Migrations\MISContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\EmployeeBio.cs" />
     <Compile Include="Models\EmployeeFullDetail.cs" />
     <Compile Include="Models\EmployeeRecognitionNomination.cs" />
     <Compile Include="Models\IdentityModels.cs" />

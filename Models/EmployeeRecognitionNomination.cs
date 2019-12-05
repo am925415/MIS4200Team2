@@ -36,7 +36,7 @@ namespace MIS4200Team2.Models
       
         [Display(Name = "Business Unit")]
         [Required(ErrorMessage = "Business Unit Required")]
-        public businessUnit bUnit { get; set; }
+        public businessUnit BusinessLocation { get; set; }
         [Display(Name = "Recognition Description:")]
         public string recognitionDescription { get; set; }
 

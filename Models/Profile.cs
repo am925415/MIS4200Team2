@@ -41,6 +41,14 @@ namespace MIS4200Team2.Models
         [Required(ErrorMessage = "Phone Number is required")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public string PhoneNumber { get; set; }
+
+        [Display(Name = "Bio:")]
+        [Required(ErrorMessage = "Please fill in Bio")]
+        public string Bio { get; set; }
+
+        [Display(Name = "Employee ID:")]
+        [Required(ErrorMessage = "Employee ID is required")]
+        public string employeeId { get; set; }
         
         public enum businessLocation
         {

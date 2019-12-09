@@ -15,7 +15,7 @@ namespace MIS4200Team2.Migrations.MISContext
        
 
 
-            AutomaticMigrationDataLossAllowed = true;
+            
 
         }
         

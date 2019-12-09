@@ -13,19 +13,15 @@ namespace MIS4200Team2.DAL
     {
         public MIS4200Context() : base("name=DefaultConnection")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MIS4200Context,
-                MIS4200Team2.Migrations.MISContext.Configuration>("DefaultConnection"));
+            // this method is a 'constructor' and is called when a new context is created
+            // the base attribute says which connection string to use
         }
-
-
-        // Include each object here.  The value inside <> is the name of the class,
+        // Include each object here. The value inside <> is the name of the class,
         // the value outside should generally be the plural of the class name
-        // and is the name used to reference the entity in code 
+        // and is the name used to reference the entity in code
+        public virtual DbSet<UserDetails> UserDetails { get; set; }
+        public virtual DbSet<Corevalueleaderboard> Users { get; set; }
 
-        public DbSet<Profile> Profiles { get; set; }
-        public DbSet<EmployeeRecognitionNomination> employeeRecognitionNominations { get; set; }
-
-        public System.Data.Entity.DbSet<MIS4200Team2.Models.EmployeeFullDetail> EmployeeFullDetails { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<MIS4200Team2.Models.Corevalueleaderboard>
+
+@{
+    ViewBag.Title = "Leaderboard";
+}
+
+<h2>Leaderboard</h2>
+
+
+<!--  @Html.ActionLink("Create New", "Create") -->
+
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Stewardship", "Index", new { sortOrder = ViewBag.StewardshipSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Culture", "Index", new { sortOrder = ViewBag.CultureSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Delivery Excellence", "Index", new { sortOrder = ViewBag.DeliverySortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Innovation", "Index", new { sortOrder = ViewBag.InnovationSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Greater Good", "Index", new { sortOrder = ViewBag.GreaterSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Integrity And Openness", "Index", new { sortOrder = ViewBag.IntegritySortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Balance", "Index", new { sortOrder = ViewBag.BalanceSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPoints)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserDetails.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stewardship)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Culture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivery_Excellence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Innovation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Greater_Good)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Integrity_And_Openness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPoints)
+            </td>
+            <td>
+                @*@Html.ActionLink("Endorse", "Edit", new { id = item.leaderboardID }) |
+                    @Html.ActionLink("Details", "Details", "UserDetails", new { id = item.ID }, null)
+                     @Html.ActionLink("Delete", "Delete", new { id = item.leaderboardID })*@
+            </td>
+        </tr>
+    }
+
+</table>
+

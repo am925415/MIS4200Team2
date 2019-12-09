@@ -33,10 +33,15 @@ namespace MIS4200Team2.Models
         [Required(ErrorMessage = "Phone Number is required")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public string PhoneNumber { get; set; }
-      
-        [Display(Name = "Business Unit")]
+
+        [Display(Name = "Title")]
+        [Required(ErrorMessage = "Title Required")]
+        public titleRecognition Title { get; set; }
+
+        [Display(Name = "Business Location")]
         [Required(ErrorMessage = "Business Unit Required")]
         public businessUnit BusinessLocation { get; set; }
+
         [Display(Name = "Recognition Description:")]
         public string recognitionDescription { get; set; }
 
@@ -60,7 +65,7 @@ namespace MIS4200Team2.Models
             Tampa
         }
 
-        public enum title
+        public enum titleRecognition
         {
             Consultant,
             [Display(Name = "Senior Consultant")]

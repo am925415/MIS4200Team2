@@ -79,10 +79,10 @@ namespace MIS4200Team2.Controllers
             {
                 db.Profiles.Add(profile);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Profiles");
             }
 
-            return View(profile);
+            return View(Profile);
         }
 
         // GET: Profiles/Edit/5

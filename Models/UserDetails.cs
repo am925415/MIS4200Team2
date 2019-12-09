@@ -28,20 +28,20 @@ namespace MIS4200Team2.Models
         [Display(Name = "Name")]
         public string fullName => firstName + " " + lastName;
 
-        [Display(Name = "Date of Birth")]
+        [Display(Name = "Birth Date")]
         [Required]
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public DateTime birthDate { get; set; }
 
 
 
-        [Display(Name = "Centric Email")]
+        [Display(Name = "Email")]
         [Required]
         [EmailAddress]
         public string Email { get; set; }
 
 
-        [Display(Name = "Primary Phone")]
+        [Display(Name = "Phone Number")]
         [Required]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^([0-9]{3})-([0-9]{3})-([0-9]{4})$",
@@ -61,7 +61,7 @@ namespace MIS4200Team2.Models
         public jobTitle JobTitle { get; set; }
 
 
-        [Display(Name = "Operating Group")]
+        [Display(Name = "Business Unit")]
         [Required]
         public operatingGroup operatingGroups { get; set; }
 
@@ -81,50 +81,38 @@ namespace MIS4200Team2.Models
         public enum jobTitle
         {
             Consultant = 0,
-            [Display(Name = "Senior Consultant")]
+            [Display(Name = "Consultant")]
             Senior_Consultant = 1,
             Manager = 2,
             Architect = 3,
-            [Display(Name = "Senior Manager")]
+            [Display(Name = "Manager")]
             Senior_Manager = 4,
-            [Display(Name = "Senior Architect")]
+            [Display(Name = "Architect")]
             Senior_Architect = 5,
-            [Display(Name = "Principal Architect")]
+            [Display(Name = "Devloper")]
             Principal_Architect = 6,
             Partner = 7,
         }
         public enum operatingGroup
         {
-            [Display(Name = "Modern Software Delivery")]
+            [Display(Name = "Software Delivery")]
             Modern_Software_Delivery = 0,
-            [Display(Name = "Data & Analytics")]
+            [Display(Name = "Governance Analytics")]
             Data_and_Analytics = 1,
-            [Display(Name = "Mobile App Development")]
+            [Display(Name = "Application Support")]
             Mobile_App_Development = 2,
-            [Display(Name = "Enterprise Collaboration")]
+            [Display(Name = "Management Collaborations")]
             Enterprise_Collaboration = 3,
-            [Display(Name = "Technology Solution Services")]
+            [Display(Name = "IT Consulting")]
             Technology_Solution_Services = 4,
             [Display(Name = "Enterprise Applications & Solutions")]
             Enterprise_Applications_and_Solutions = 5,
-            [Display(Name = "Marketing Operations & CRM")]
+            [Display(Name = "Marketing")]
             Marketing_Operations_and_CRM = 6,
-            [Display(Name = "Talent Management")]
+            [Display(Name = "Human Resources")]
             Talent_Management = 7,
-            Digital = 8,
-            [Display(Name = "Customer Experience & Design")]
-            Customer_Experience_and_Design = 9,
-            [Display(Name = "Microsoft Partnership")]
-            Microsoft_Partnership = 10,
-            [Display(Name = "People & Change")]
-            People_and_Change = 11,
-            [Display(Name = "Operational & Process Excellence")]
-            Operational_and_Process_Excellence = 12,
-            Insurance = 13,
-            Healthcare = 14,
-            [Display(Name = "Energy & Utilities")]
-            Energy_and_Utilities = 15,
-            [Display(Name = "Financial Services")]
+            Digital = 8,        
+            [Display(Name = "Finance")]
             Financial_Services = 16,
         }
         public enum location

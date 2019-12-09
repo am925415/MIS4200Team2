@@ -55,7 +55,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: UserDetails/Details/5
-        public ActionResult Details(Guid? id)
+       public ActionResult Details(Guid? id)
         {
 
             Guid userID;

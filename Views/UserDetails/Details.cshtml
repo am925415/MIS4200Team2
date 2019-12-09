@@ -41,28 +41,24 @@
                     <br /><br />
 
                     @{
-                        string strFilePath = Convert.ToString(@Url.Content("~/Images/"));
-                        string strFilePath2 = Convert.ToString(@Html.DisplayFor(model => model.photo));
-
-                        string strFilePathFull = strFilePath + strFilePath2;
-
-                        string strProfilePicture = "";
-
                         string strJobTitle = Convert.ToString(@Html.DisplayFor(model => model.JobTitle)).Replace("_", " ");
                         string strOpGroup = Convert.ToString(@Html.DisplayFor(model => model.operatingGroups)).Replace("_", " ");
                         string strLocations = Convert.ToString(@Html.DisplayFor(model => model.locations)).Replace("_", " ");
 
-                        if (strFilePathFull == "/Images/")
+
+
+                        if (Model.photo != null)
                         {
-                            strProfilePicture = "Avatar.png";
+                            <img src="@Url.Content("~/Images/")@Model.photo" width="100" />
                         }
                         else
                         {
-                            strProfilePicture = strFilePath2;
+                            <img src="~/Images/Avatar.png" width="100" />
                         }
                     }
 
-                    <img src="@Url.Content("~/Images/")@strProfilePicture" width="125" />
+
+
 
                     <br /><br />
 
@@ -648,11 +644,8 @@
 
 
 <script>
-        function goBack() {
-            window.history.back();
-        }
+    function goBack() {
+        window.history.back();
+    }
 
 </script>
-
-
-

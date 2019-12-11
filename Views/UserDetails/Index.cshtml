@@ -1,22 +1,43 @@
 ﻿@model IEnumerable<MIS4200Team2.Models.UserDetails>
 
 @{
-    <h1 style="color:orange;">Employees</h1>
+    ViewBag.Title = "Employee Directory";
 }
 
+<style>
+    .table-striped > tbody > tr:nth-child(odd) > td {
+        background-color: #d2ced9;
+    }
 
-<p>
-    <!-- @Html.ActionLink("Create New", "Create") -->
-    @using (Html.BeginForm("Index", "userDetails", FormMethod.Get))
-    {
-    <p>
+    .table-striped > tbody > tr:nth-child(even) > td {
+        background-color: #ffeec8;
+    }
+
+
+    td {
+        font-weight: bold;
+    }
+</style>
+
+<h1 style="text-align:center; font-size: 50px"><span style="color:#ffb612; font-weight:600;">((</span> <span style="color:#412d5e; font-weight:600;">EMPLOYEE DIRECTORY</span> <span style="color:#ffb612; font-weight:600;">))</span></h1>
+
+<hr />
+
+@using (Html.BeginForm("Index", "userDetails", FormMethod.Get))
+{
+    <p style="float:right;">
+
         Find by name: @Html.TextBox("searchString")
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search" width="100" />
     </p>
 }
 
-    <table class="table">
-        <tr>
+<p>
+
+    <table class="table border-collapse table-striped ">
+
+
+        <tr style="background-color:#412d5e; color:#ffb612;">
             <th>
                 @Html.DisplayNameFor(model => model.fullName)
             </th>
@@ -38,6 +59,7 @@
             </th>
             <th></th>
         </tr>
+
 
         @foreach (var item in Model)
         {
@@ -84,4 +106,6 @@
         }
 
     </table>
+
+</p>
 

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace MIS4200Team2.Models
@@ -35,13 +33,13 @@ namespace MIS4200Team2.Models
 
 
 
-        [Display(Name = "Email")]
+        [Display(Name = "Centric Email")]
         [Required]
         [EmailAddress]
         public string Email { get; set; }
 
 
-        [Display(Name = "Phone")]
+        [Display(Name = "Primary Phone")]
         [Required]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^([0-9]{3})-([0-9]{3})-([0-9]{4})$",
@@ -61,17 +59,17 @@ namespace MIS4200Team2.Models
         public jobTitle JobTitle { get; set; }
 
 
-        [Display(Name = "Business Unit")]
+        [Display(Name = "Operating Group")]
         [Required]
         public operatingGroup operatingGroups { get; set; }
 
 
-        [Display(Name = "City")]
+        [Display(Name = "Location")]
         [Required]
         public location locations { get; set; }
 
 
-        [Display(Name = "Picture (optional)")]
+        [Display(Name = "Profile Picture (optional)")]
 
         [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only JPG, GIF, or PNG are accepted.")]
         public string photo { get; set; }
@@ -81,41 +79,51 @@ namespace MIS4200Team2.Models
         public enum jobTitle
         {
             Consultant = 0,
-            [Display(Name = "Consultant")]
+            [Display(Name = "Senior Consultant")]
             Senior_Consultant = 1,
             Manager = 2,
             Architect = 3,
-            [Display(Name = "Manager")]
+            [Display(Name = "Senior Manager")]
             Senior_Manager = 4,
-            [Display(Name = "Architect")]
+            [Display(Name = "Senior Architect")]
             Senior_Architect = 5,
-            [Display(Name = "Developer")]
+            [Display(Name = "Principal Architect")]
             Principal_Architect = 6,
             Partner = 7,
         }
         public enum operatingGroup
         {
-            [Display(Name = "IT Development")]
+            [Display(Name = "Modern Software Delivery")]
             Modern_Software_Delivery = 0,
-            [Display(Name = "Secruity")]
+            [Display(Name = "Data & Analytics")]
             Data_and_Analytics = 1,
-            [Display(Name = "Governance and Analytics")]
+            [Display(Name = "Mobile App Development")]
             Mobile_App_Development = 2,
-            [Display(Name = "Enterprise Systems")]
+            [Display(Name = "Enterprise Collaboration")]
             Enterprise_Collaboration = 3,
-            [Display(Name = "Application Support")]
+            [Display(Name = "Technology Solution Services")]
             Technology_Solution_Services = 4,
-            [Display(Name = "C-Suite")]
+            [Display(Name = "Enterprise Applications & Solutions")]
             Enterprise_Applications_and_Solutions = 5,
-            [Display(Name = "Marketing IT")]
+            [Display(Name = "Marketing Operations & CRM")]
             Marketing_Operations_and_CRM = 6,
-            [Display(Name = "Human Resources")]
+            [Display(Name = "Talent Management")]
             Talent_Management = 7,
             Digital = 8,
-            [Display(Name = "Sales")]
-            Customer_Experience_and_Design = 9,            
+            [Display(Name = "Customer Experience & Design")]
+            Customer_Experience_and_Design = 9,
+            [Display(Name = "Microsoft Partnership")]
+            Microsoft_Partnership = 10,
+            [Display(Name = "People & Change")]
+            People_and_Change = 11,
+            [Display(Name = "Operational & Process Excellence")]
+            Operational_and_Process_Excellence = 12,
+            Insurance = 13,
+            Healthcare = 14,
+            [Display(Name = "Energy & Utilities")]
+            Energy_and_Utilities = 15,
             [Display(Name = "Financial Services")]
-            Financial_Services = 10,
+            Financial_Services = 16,
         }
         public enum location
         {
@@ -134,6 +142,14 @@ namespace MIS4200Team2.Models
             Miami = 11,
             Tampa = 12,
         }
-        public ICollection<Corevalueleaderboard> Users { get; set; }
+        public ICollection<CoreValueLeaderboard> Users { get; set; }
     }
+
+
+
+
+
+
+
+
 }

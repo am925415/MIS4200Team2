@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MIS4200Team2.Models;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
-using MIS4200Team2.Models;  // This is needed to access the models 
 
 
 
 namespace MIS4200Team2.DAL
 {
-    public class MIS4200Context : DbContext
+    public class Context2 : DbContext
     {
-        public MIS4200Context() : base("name=DefaultConnection")
+        public Context2() : base("name=DefaultConnection")
         {
             // this method is a 'constructor' and is called when a new context is created
             // the base attribute says which connection string to use
@@ -20,7 +16,7 @@ namespace MIS4200Team2.DAL
         // the value outside should generally be the plural of the class name
         // and is the name used to reference the entity in code
         public virtual DbSet<UserDetails> UserDetails { get; set; }
-        public virtual DbSet<Corevalueleaderboard> Users { get; set; }
+        public virtual DbSet<CoreValueLeaderboard> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

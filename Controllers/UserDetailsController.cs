@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
+using MIS4200Team2.DAL;
+using MIS4200Team2.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MIS4200Team2.DAL;
-using MIS4200Team2.Models;
-using System.IO;
-using Microsoft.AspNet.Identity;
 
 namespace MIS4200Team2.Controllers
 {
     public class UserDetailsController : Controller
     {
-        private MIS4200Context db = new MIS4200Context();
+        private Context2 db = new Context2();
 
         // GET: UserDetails
         public ActionResult Index(string searchString)
@@ -132,7 +131,7 @@ namespace MIS4200Team2.Controllers
 
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
-                return RedirectToAction("Create", "Corevalueleaderboards");
+                return RedirectToAction("Create", "CoreValueLeaderboard");
             }
 
             return View(userDetails);
@@ -213,7 +212,7 @@ namespace MIS4200Team2.Controllers
                                 // must already be deleted
                             }
                         }
-                        catch (Exception )
+                        catch (Exception Ex)
                         {
                             // delete failed - probably not a real issue
                         }
@@ -320,4 +319,3 @@ namespace MIS4200Team2.Controllers
         }
     }
 }
-

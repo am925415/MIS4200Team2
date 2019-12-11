@@ -4,37 +4,15 @@
     ViewBag.Title = "Leaderboard";
 }
 
-<style>
-    .table-striped > tbody > tr:nth-child(odd) > td {
-        background-color: #d2ced9;
-    }
+    <h1 style="color:orange;font-family:Arial, Helvetica, sans-serif">Centric's Employee Recognition Leaderboard</h1>
 
-    .table-striped > tbody > tr:nth-child(even) > td {
-        background-color: #ffeec8;
-    }
-
-    td {
-        font-weight: bold;
-    }
-
-    a.linkcolor {
-        color: #ffb612;
-        text-decoration: underline;
-        font-size: 14px;
-    }
-    }
-</style>
-
-<h1 style="text-align:center; font-size: 50px"><span style="color:#ffb612; font-weight:600;">((</span> <span style="color:#412d5e; font-weight:600;">RECOGNITION LEADERBOARD</span> <span style="color:#ffb612; font-weight:600;">))</span></h1>
-
-<hr />
 
 <p>
 
     <table class="table border-collapse table-striped">
 
 
-        <tr style="background-color:#412d5e; color:#ffb612;">
+        <tr style="background-color:orange; color:#fff;">
             <th>
                 @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm }, new { @class = "linkcolor" })
             </th>

@@ -66,13 +66,13 @@ namespace MIS4200Team2.Controllers
             //    var DE = coreValues.Select(r => r.Delivery_Excellence == r.Delivery_Excellence);
 
             // ViewBag.Stewardship = coreValues.Stewardship;
-            ViewBag.Culture = coreValues.Culture;
-            ViewBag.DeliveryExcellence = coreValues.Delivery_Excellence;
-            ViewBag.Innovation = coreValues.Innovation;
-            ViewBag.GreaterGood = coreValues.Greater_Good;
-            ViewBag.Integrity = coreValues.Integrity_And_Openness;
-            ViewBag.Balance = coreValues.Balance;
-            ViewBag.CoreID = coreValues.leaderboardID;
+            //ViewBag.Culture = coreValues.Culture;
+            //ViewBag.DeliveryExcellence = coreValues.Delivery_Excellence;
+            //ViewBag.Innovation = coreValues.Innovation;
+            //ViewBag.GreaterGood = coreValues.Greater_Good;
+            //ViewBag.Integrity = coreValues.Integrity_And_Openness;
+            //ViewBag.Balance = coreValues.Balance;
+            //ViewBag.CoreID = coreValues.leaderboardID;
 
             ViewBag.userID = userID;
 

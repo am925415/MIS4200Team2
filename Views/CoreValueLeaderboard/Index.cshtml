@@ -9,47 +9,39 @@
 
 <p>
 
-    <table class="table border-collapse table-hover">
+    <table class="table border-collapse table-striped">
+
 
         <tr style="background-color:orange; color:#fff;">
             <th>
-                
-                @Html.DisplayNameFor(model => model.UserDetails.fullName)
-
-
+                Name
             </th>
             <th>
-                
-                @Html.DisplayNameFor(model => model.Stewardship)
+                @Html.ActionLink("Stewardship", "Index", new { sortOrder = ViewBag.StewardshipSortParm }, new { @class = "linkcolor" })
             </th>
             <th>
-                
-                @Html.DisplayNameFor(model => model.Culture)
+                @Html.ActionLink("Culture", "Index", new { sortOrder = ViewBag.CultureSortParm }, new { @class = "linkcolor" })
             </th>
             <th>
-                
-                @Html.DisplayNameFor(model => model.Delivery_Excellence)
+                @Html.ActionLink("Delivery Excellence", "Index", new { sortOrder = ViewBag.DeliverySortParm }, new { @class = "linkcolor" })
             </th>
             <th>
-                
-                @Html.DisplayNameFor(model => model.Innovation)
+                @Html.ActionLink("Innovation", "Index", new { sortOrder = ViewBag.InnovationSortParm }, new { @class = "linkcolor" })
             </th>
             <th>
-               
-                @Html.DisplayNameFor(model => model.Greater_Good)
+                @Html.ActionLink("Greater Good", "Index", new { sortOrder = ViewBag.GreaterSortParm }, new { @class = "linkcolor" })
             </th>
             <th>
-                
-                @Html.DisplayNameFor(model => model.Integrity_And_Openness)
+                @Html.ActionLink("Integrity And Openness", "Index", new { sortOrder = ViewBag.IntegritySortParm }, new { @class = "linkcolor" })
             </th>
             <th>
-                
-                @Html.DisplayNameFor(model => model.Balance)
+                @Html.ActionLink("Balance", "Index", new { sortOrder = ViewBag.BalanceSortParm }, new { @class = "linkcolor" })
             </th>
-            
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPoints)
+            </th>
             <th></th>
         </tr>
-
 
         @foreach (var item in Model)
         {
@@ -78,9 +70,11 @@
                 <td style="text-align: center;">
                     @Html.DisplayFor(modelItem => item.Balance)
                 </td>
-                
+                <td style="text-align: center;">
+                    @Html.DisplayFor(modelItem => item.TotalPoints)
+                </td>
                 <td>
-                    @Html.ActionLink("Endorse", "Edit", new { id = item.leaderboardID })
+                    @Html.ActionLink("Recognize Employee", "Edit", new { id = item.leaderboardID })
                 </td>
             </tr>
         }

@@ -65,7 +65,7 @@ namespace MIS4200Team2.Controllers
 
             //    var DE = coreValues.Select(r => r.Delivery_Excellence == r.Delivery_Excellence);
 
-            ViewBag.Stewardship = coreValues.Stewardship;
+            // ViewBag.Stewardship = coreValues.Stewardship;
             ViewBag.Culture = coreValues.Culture;
             ViewBag.DeliveryExcellence = coreValues.Delivery_Excellence;
             ViewBag.Innovation = coreValues.Innovation;
@@ -131,7 +131,7 @@ namespace MIS4200Team2.Controllers
 
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
-                return RedirectToAction("Create", "CoreValueLeaderboard");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(userDetails);
